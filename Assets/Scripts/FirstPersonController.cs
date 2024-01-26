@@ -1,0 +1,41 @@
+using Cinemachine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(CharacterController))]
+public class FirstPersonController : MonoBehaviour
+{
+    [SerializeField] private CinemachineVirtualCamera cameraFPS;
+    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float cameraSpeed = 0.3f;
+    [SerializeField] private float gravityModifier = 1f;
+
+    private CinemachinePOV cameraPOV;
+    private Transform cameraMainTransform;
+    private InputManager inputManager;
+    private CharacterController controller;
+    private float gravity = -9.81f;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+
+        cameraPOV = cameraFPS.GetCinemachineComponent<CinemachinePOV>();
+        cameraMainTransform = Camera.main.transform;
+        inputManager = InputManager.Instance;
+        controller = GetComponent<CharacterController>();
+    }
+
+    private void Update()
+    {
+        cameraPOV.m_VerticalAxis.m_MaxSpeed = cameraSpeed;
+        cameraPOV.m_HorizontalAxis.m_MaxSpeed = cameraSpeed;
+
+        Vector2 movement = inputManager.GetPlayerMovement();
+        Vector3 motion = cameraMainTransform.forward * movement.y + cameraMainTransform.right * movement.x;
+        motion.y = gravity * gravityModifier;
+
+        controller.Move(Time.deltaTime * movementSpeed * motion);
+    }
+}
