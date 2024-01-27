@@ -6,13 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
+    [SerializeField] private Transform cameraMainTransform;
     [SerializeField] private CinemachineVirtualCamera cameraFPS;
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float cameraSpeed = 0.3f;
     [SerializeField] private float gravityModifier = 1f;
 
     private CinemachinePOV cameraPOV;
-    private Transform cameraMainTransform;
     private InputManager inputManager;
     private CharacterController controller;
     private float gravity = -9.81f;
@@ -22,7 +22,6 @@ public class FirstPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         cameraPOV = cameraFPS.GetCinemachineComponent<CinemachinePOV>();
-        cameraMainTransform = Camera.main.transform;
         inputManager = InputManager.Instance;
         controller = GetComponent<CharacterController>();
     }

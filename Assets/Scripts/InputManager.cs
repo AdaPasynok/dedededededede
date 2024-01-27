@@ -41,4 +41,9 @@ public class InputManager : MonoBehaviour
     {
         return controls.Player.Look.ReadValue<Vector2>();
     }
+
+    public bool PlayerShot()
+    {
+        return controls.Player.Shoot.triggered;
+    }
 }
