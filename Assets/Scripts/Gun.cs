@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private Transform cameraMainTransform;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private float cameraShakeForce = 1f;
 
     private InputManager inputManager;
@@ -22,6 +23,7 @@ public class Gun : MonoBehaviour
     {
         if (inputManager.PlayerShot())
         {
+            muzzleFlash.Play();
             cameraShake.GenerateImpulse(cameraShakeForce);
 
             if (Physics.Raycast(cameraMainTransform.position, cameraMainTransform.forward, out RaycastHit hitInfo, Mathf.Infinity, layerMask))
