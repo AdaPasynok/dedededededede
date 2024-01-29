@@ -29,7 +29,12 @@ public class Gun : MonoBehaviour
 
             if (Physics.Raycast(cameraMainTransform.position, cameraMainTransform.forward, out RaycastHit hitInfo, Mathf.Infinity, layerMask))
             {
-                Debug.Log(hitInfo.collider.name);
+                IShootable shootable = hitInfo.collider.GetComponentInParent<IShootable>();
+
+                if (shootable != null)
+                {
+                    shootable.OnShot(hitInfo.collider.gameObject, hitInfo.point, cameraMainTransform.forward);
+                }
             }
         }
     }
