@@ -31,8 +31,12 @@ public class FirstPersonController : MonoBehaviour
         cameraPOV.m_VerticalAxis.m_MaxSpeed = cameraSpeed;
         cameraPOV.m_HorizontalAxis.m_MaxSpeed = cameraSpeed;
 
+        Vector3 rotation = transform.rotation.eulerAngles;
+        rotation.y = cameraMainTransform.rotation.eulerAngles.y;
+        transform.rotation = Quaternion.Euler(rotation);
+
         Vector2 movement = inputManager.GetPlayerMovement();
-        Vector3 motion = cameraMainTransform.forward * movement.y + cameraMainTransform.right * movement.x;
+        Vector3 motion = transform.forward * movement.y + transform.right * movement.x;
         motion.y = gravity * gravityModifier;
 
         controller.Move(Time.deltaTime * movementSpeed * motion);
