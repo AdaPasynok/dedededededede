@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
 
     private InputManager inputManager;
     private CinemachineImpulseSource cameraShake;
+    private bool isGunOut = false;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (inputManager.PlayerShot())
+        if (inputManager.PlayerShot() && isGunOut)
         {
             muzzleFlash.Play();
             cameraShake.GenerateImpulse(cameraShakeForce);
@@ -31,5 +32,10 @@ public class Gun : MonoBehaviour
                 Debug.Log(hitInfo.collider.name);
             }
         }
+    }
+
+    public void GunOut()
+    {
+        isGunOut = true;
     }
 }
