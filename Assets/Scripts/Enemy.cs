@@ -1,77 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 
-public class Enemy : MonoBehaviour, IShootable
+public abstract class Enemy : MonoBehaviour, IShootable
 {
-    [SerializeField] private float speed = 1f;
-    [SerializeField] private Transform foot1, foot2;
-    [Space]
-    [SerializeField] private float gunShotForce = 50f;
-    [SerializeField] private ParticleSystem bloodSplash;
-    [Space]
     [SerializeField] private Transform head;
     [SerializeField] private Transform playerHead;
     [SerializeField] private LayerMask ignoreSelfMask;
+    [Space]
+    [SerializeField] private float gunShotForce = 50f;
+    [SerializeField] private ParticleSystem bloodSplash;
 
-    private NavMeshAgent navMeshAgent;
+    protected bool isDead = false;
+
     private RigBuilder rigBuilder;
     private Rigidbody[] rigidbodies;
-    private float heightOffset;
-    private bool isDead = false;
 
-    private void Start()
+    protected virtual void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
         rigBuilder = GetComponent<RigBuilder>();
         rigidbodies = GetComponentsInChildren<Rigidbody>();
-        heightOffset = transform.position.y - GetAverageFootHeight();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!isDead)
         {
-            //Walk();
-
             Vector3 directionToPlayer = playerHead.position - head.position;
 
             if (Physics.Raycast(head.position, directionToPlayer, out RaycastHit hitInfo, Mathf.Infinity, ignoreSelfMask))
             {
                 if (hitInfo.collider.CompareTag("Player"))
                 {
-                    ChasePlayer();
+                    OnPlayerDetected(playerHead.position);
                 }
             }
         }
     }
 
-    private void ChasePlayer()
-    {
-        NavMeshPath path = new NavMeshPath();
-        navMeshAgent.CalculatePath(playerHead.position, path);
-
-        if (path.status == NavMeshPathStatus.PathComplete)
-        {
-            navMeshAgent.path = path;
-        }
-    }
-
-    private void Walk()
-    {
-        transform.Translate(Time.deltaTime * speed * transform.forward, Space.World);
-
-        Vector3 position = transform.position;
-        position.y = GetAverageFootHeight() + heightOffset;
-        transform.position = position;
-    }
-
-    private float GetAverageFootHeight()
-    {
-        return (foot1.position.y + foot2.position.y) / 2f;
-    }
+    protected abstract void OnPlayerDetected(Vector3 playerPosition);
 
     private void EnableRagdoll()
     {
@@ -81,12 +49,11 @@ public class Enemy : MonoBehaviour, IShootable
         }
     }
 
-    public void OnShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
+    public virtual void OnShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
     {
         if (!isDead)
         {
             isDead = true;
-            navMeshAgent.isStopped = true;
             rigBuilder.enabled = false;
             EnableRagdoll();
             objectShot.GetComponent<Rigidbody>().AddForceAtPosition(gunShotForce * direction, hitPoint, ForceMode.Impulse);
