@@ -26,12 +26,12 @@ public class FootIK : MonoBehaviour
     {
         transform.position = currentPosition;
 
-        if (Physics.Raycast(body.position + (body.right * footSpacing), Vector3.down, out RaycastHit hitInfo, 10f, groundMask))
+        if (Physics.Raycast(body.position + body.right * footSpacing + body.forward * (stepDistance / 2f), Vector3.down, out RaycastHit hitInfo, 10f, groundMask))
         {
             if (Vector3.Distance(hitInfo.point, newPosition) >= stepDistance && !otherFoot.IsMoving() && !IsMoving())
             {
                 lerp = 0f;
-                newPosition = hitInfo.point + (body.forward * stepDistance) + footOffset;
+                newPosition = hitInfo.point + body.forward * stepDistance + footOffset;
             }
         }
 

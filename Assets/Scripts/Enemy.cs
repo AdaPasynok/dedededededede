@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 
 public class Enemy : MonoBehaviour, IShootable
 {
     [SerializeField] private float speed = 1f;
     [SerializeField] private Transform foot1, foot2;
+    [Space]
     [SerializeField] private float gunShotForce = 50f;
     [SerializeField] private ParticleSystem bloodSplash;
+    [Space]
+    [SerializeField] private Transform head;
+    [SerializeField] private Transform playerHead;
+    [SerializeField] private LayerMask ignoreSelfMask;
 
+    private NavMeshAgent navMeshAgent;
     private RigBuilder rigBuilder;
     private Rigidbody[] rigidbodies;
     private float heightOffset;
@@ -17,6 +24,7 @@ public class Enemy : MonoBehaviour, IShootable
 
     private void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
         rigBuilder = GetComponent<RigBuilder>();
         rigidbodies = GetComponentsInChildren<Rigidbody>();
         heightOffset = transform.position.y - GetAverageFootHeight();
@@ -26,7 +34,28 @@ public class Enemy : MonoBehaviour, IShootable
     {
         if (!isDead)
         {
-            Walk();
+            //Walk();
+
+            Vector3 directionToPlayer = playerHead.position - head.position;
+
+            if (Physics.Raycast(head.position, directionToPlayer, out RaycastHit hitInfo, Mathf.Infinity, ignoreSelfMask))
+            {
+                if (hitInfo.collider.CompareTag("Player"))
+                {
+                    ChasePlayer();
+                }
+            }
+        }
+    }
+
+    private void ChasePlayer()
+    {
+        NavMeshPath path = new NavMeshPath();
+        navMeshAgent.CalculatePath(playerHead.position, path);
+
+        if (path.status == NavMeshPathStatus.PathComplete)
+        {
+            navMeshAgent.path = path;
         }
     }
 
@@ -57,6 +86,7 @@ public class Enemy : MonoBehaviour, IShootable
         if (!isDead)
         {
             isDead = true;
+            navMeshAgent.isStopped = true;
             rigBuilder.enabled = false;
             EnableRagdoll();
             objectShot.GetComponent<Rigidbody>().AddForceAtPosition(gunShotForce * direction, hitPoint, ForceMode.Impulse);
