@@ -27,7 +27,7 @@ public class Gun : MonoBehaviour
             muzzleFlash.Play();
             cameraShake.GenerateImpulse(cameraShakeForce);
 
-            if (Physics.Raycast(cameraMainTransform.position, cameraMainTransform.forward, out RaycastHit hitInfo, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(cameraMainTransform.position, cameraMainTransform.forward, out RaycastHit hitInfo, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
             {
                 IShootable shootable = hitInfo.collider.GetComponentInParent<IShootable>();
 
