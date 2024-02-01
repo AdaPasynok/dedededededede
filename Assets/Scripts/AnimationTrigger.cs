@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolTrigger : MonoBehaviour
+public class AnimationTrigger : MonoBehaviour
 {
-    [SerializeField] private Animator pistolAnimator, crosshairAnimator;
+    [SerializeField] private Animator[] animators;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            pistolAnimator.SetTrigger("Pull Out");
-            crosshairAnimator.SetTrigger("Fade In");
+            foreach (Animator animator in animators)
+            {
+                animator.enabled = true;
+            }
+
             gameObject.SetActive(false);
         }
     }
