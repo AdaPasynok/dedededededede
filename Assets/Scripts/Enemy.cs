@@ -13,12 +13,14 @@ public abstract class Enemy : MonoBehaviour, IShootable
 
     protected bool isDead = false;
 
+    private Collider outerTriggerColliderForPlayerCollisionDetection;
     private Transform playerHead;
     private RigBuilder rigBuilder;
     private Rigidbody[] rigidbodies;
 
     protected virtual void Start()
     {
+        outerTriggerColliderForPlayerCollisionDetection = GetComponent<Collider>();
         playerHead = GameManager.Instance.playerHead;
         rigBuilder = GetComponent<RigBuilder>();
         rigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -55,6 +57,7 @@ public abstract class Enemy : MonoBehaviour, IShootable
         if (!isDead)
         {
             isDead = true;
+            outerTriggerColliderForPlayerCollisionDetection.enabled = false;
             rigBuilder.enabled = false;
             EnableRagdoll();
             objectShot.GetComponent<Rigidbody>().AddForceAtPosition(gunShotForce * direction, hitPoint, ForceMode.Impulse);
