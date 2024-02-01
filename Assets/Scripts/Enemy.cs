@@ -6,7 +6,6 @@ using UnityEngine.Animations.Rigging;
 public abstract class Enemy : MonoBehaviour, IShootable
 {
     [SerializeField] private Transform head;
-    [SerializeField] private Transform playerHead;
     [SerializeField] private LayerMask ignoreSelfMask;
     [Space]
     [SerializeField] private float gunShotForce = 50f;
@@ -14,11 +13,13 @@ public abstract class Enemy : MonoBehaviour, IShootable
 
     protected bool isDead = false;
 
+    private Transform playerHead;
     private RigBuilder rigBuilder;
     private Rigidbody[] rigidbodies;
 
     protected virtual void Start()
     {
+        playerHead = GameManager.Instance.playerHead;
         rigBuilder = GetComponent<RigBuilder>();
         rigidbodies = GetComponentsInChildren<Rigidbody>();
     }
