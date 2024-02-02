@@ -13,6 +13,7 @@ public abstract class Enemy : MonoBehaviour, IShootable
 
     protected bool isDead = false;
 
+    private EnemyManager enemyManager;
     private Collider outerTriggerColliderForPlayerCollisionDetection;
     private Transform playerHead;
     private RigBuilder rigBuilder;
@@ -20,6 +21,8 @@ public abstract class Enemy : MonoBehaviour, IShootable
 
     protected virtual void Start()
     {
+        enemyManager = EnemyManager.Instance;
+        enemyManager.OnEnemySpawn();
         outerTriggerColliderForPlayerCollisionDetection = GetComponent<Collider>();
         playerHead = GameManager.Instance.playerHead;
         rigBuilder = GetComponent<RigBuilder>();
@@ -57,6 +60,7 @@ public abstract class Enemy : MonoBehaviour, IShootable
         if (!isDead)
         {
             isDead = true;
+            enemyManager.OnEnemyKilled();
             outerTriggerColliderForPlayerCollisionDetection.enabled = false;
             rigBuilder.enabled = false;
             EnableRagdoll();
