@@ -12489,7 +12489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 968241106295468183}
-  playerHead: {fileID: 0}
   ignoreSelfMask:
     serializedVersion: 2
     m_Bits: 127
@@ -12497,7 +12496,6 @@ MonoBehaviour:
   bloodSplash: {fileID: 1968104362005178656}
   bullet: {fileID: 6586056644094698731, guid: f09a7855b2d678647ab04669d1ca10b1, type: 3}
   muzzleFlash: {fileID: 2794562813761547459}
-  timeBetweenShots: 0.5
 --- !u!136 &871719275542653887
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12517,7 +12515,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.7
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
