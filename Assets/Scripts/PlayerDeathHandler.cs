@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PlayerDeathHandler : MonoBehaviour
 {
+    private void Die()
+    {
+        GameManager.Instance.RestartLevel();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("u ded");
+            Die();
         }
     }
 
@@ -16,7 +21,7 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-            Debug.Log("u ded");
+            Die();
         }
     }
 }
