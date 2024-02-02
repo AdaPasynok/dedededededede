@@ -18,23 +18,29 @@ public class Gun : MonoBehaviour
     {
         inputManager = InputManager.Instance;
         cameraShake = GetComponent<CinemachineImpulseSource>();
+        AudioManager.Instance.OnKick += Shoot;
     }
 
     private void Update()
     {
         if (inputManager.PlayerShot() && isGunOut)
         {
-            muzzleFlash.Play();
-            cameraShake.GenerateImpulse(cameraShakeForce);
+            //Shoot();
+        }
+    }
 
-            if (Physics.Raycast(cameraMainTransform.position, cameraMainTransform.forward, out RaycastHit hitInfo, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
+    private void Shoot()
+    {
+        muzzleFlash.Play();
+        cameraShake.GenerateImpulse(cameraShakeForce);
+
+        if (Physics.Raycast(cameraMainTransform.position, cameraMainTransform.forward, out RaycastHit hitInfo, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
+        {
+            IShootable shootable = hitInfo.collider.GetComponentInParent<IShootable>();
+
+            if (shootable != null)
             {
-                IShootable shootable = hitInfo.collider.GetComponentInParent<IShootable>();
-
-                if (shootable != null)
-                {
-                    shootable.OnShot(hitInfo.collider.gameObject, hitInfo.point, cameraMainTransform.forward);
-                }
+                shootable.OnShot(hitInfo.collider.gameObject, hitInfo.point, cameraMainTransform.forward);
             }
         }
     }

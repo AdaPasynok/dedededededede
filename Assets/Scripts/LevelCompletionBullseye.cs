@@ -11,6 +11,7 @@ public class LevelCompletionBullseye : MonoBehaviour
 
     private void CompleteLevel()
     {
+        AudioManager.Instance.StopKicks();
         GameManager.Instance.LoadNextLevel();
     }
 }

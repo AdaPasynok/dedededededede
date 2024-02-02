@@ -18,6 +18,7 @@ public class EnemyShooter : Enemy
         base.Start();
         OnPlayerDetected += (playerPosition) => isPlayerVisible = true;
         OnPlayerLost += () => isPlayerVisible = false;
+        AudioManager.Instance.OnKick += Shoot;
         aimingRig = GetComponentsInChildren<MultiAimConstraint>();
         gameManager = GameManager.Instance;
 
