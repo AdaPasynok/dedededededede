@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationTrigger : MonoBehaviour
 {
+    [SerializeField] private UnityEvent OnTriggered;
+
     [SerializeField] private Animator[] animators;
 
     private void OnTriggerEnter(Collider other)
@@ -15,6 +18,7 @@ public class AnimationTrigger : MonoBehaviour
                 animator.enabled = true;
             }
 
+            OnTriggered?.Invoke();
             gameObject.SetActive(false);
         }
     }
