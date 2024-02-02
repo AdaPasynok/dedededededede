@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +12,15 @@ public abstract class Enemy : MonoBehaviour, IShootable
     [SerializeField] private float gunShotForce = 50f;
     [SerializeField] private ParticleSystem bloodSplash;
 
+    protected event Action<Vector3> OnPlayerDetected;
+    protected event Action OnPlayerLost;
+
+    protected RigBuilder rigBuilder;
     protected bool isDead = false;
 
     private EnemyManager enemyManager;
     private Collider outerTriggerColliderForPlayerCollisionDetection;
     private Transform playerHead;
-    private RigBuilder rigBuilder;
     private Rigidbody[] rigidbodies;
 
     protected virtual void Start()
@@ -39,13 +43,15 @@ public abstract class Enemy : MonoBehaviour, IShootable
             {
                 if (hitInfo.collider.CompareTag("Player"))
                 {
-                    OnPlayerDetected(playerHead.position);
+                    OnPlayerDetected?.Invoke(playerHead.position);
+                }
+                else
+                {
+                    OnPlayerLost?.Invoke();
                 }
             }
         }
     }
-
-    protected abstract void OnPlayerDetected(Vector3 playerPosition);
 
     private void EnableRagdoll()
     {

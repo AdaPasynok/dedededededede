@@ -11,8 +11,9 @@ public class EnemyChaser : Enemy
     {
         base.Start();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        OnPlayerDetected += ChasePlayer;
     }
-    protected override void OnPlayerDetected(Vector3 playerPosition)
+    private void ChasePlayer(Vector3 playerPosition)
     {
         NavMeshPath path = new();
         navMeshAgent.CalculatePath(playerPosition, path);
