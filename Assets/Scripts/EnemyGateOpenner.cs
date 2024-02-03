@@ -6,7 +6,7 @@ public class EnemyGateOpenner : MonoBehaviour, IShootable
 {
     [SerializeField] private Animator enemyGatesAnimator;
 
-    public void OnShot(GameObject objectShot, Vector3 hitPoint, Vector3 directon)
+    public void OnShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
     {
         enemyGatesAnimator.enabled = true;
     }
