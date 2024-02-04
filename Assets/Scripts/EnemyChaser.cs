@@ -27,12 +27,12 @@ public class EnemyChaser : Enemy
         }
     }
 
-    public override void OnShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
+    public override void OnGotShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
     {
         if (!isDead)
         {
             navMeshAgent.isStopped = true;
-            base.OnShot(objectShot, hitPoint, direction);
+            base.OnGotShot(objectShot, hitPoint, direction);
         }
     }
 }

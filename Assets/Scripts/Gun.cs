@@ -40,7 +40,7 @@ public class Gun : MonoBehaviour
 
             if (shootable != null)
             {
-                shootable.OnShot(hitInfo.collider.gameObject, hitInfo.point, cameraMainTransform.forward);
+                shootable.OnGotShot(hitInfo.collider.gameObject, hitInfo.point, cameraMainTransform.forward);
             }
         }
     }

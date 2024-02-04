@@ -38,7 +38,7 @@ public class SearchStatue : MonoBehaviour, IShootable
         }
     }
 
-    public void OnShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
+    public void OnGotShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
     {
         oldRotation = transform.eulerAngles;
         transform.forward = direction;

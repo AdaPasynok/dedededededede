@@ -63,7 +63,7 @@ public abstract class Enemy : MonoBehaviour, IShootable
         }
     }
 
-    public virtual void OnShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
+    public virtual void OnGotShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
     {
         if (!isDead)
         {
