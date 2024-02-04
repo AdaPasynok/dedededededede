@@ -34,11 +34,20 @@ public class EnemyShooter : Enemy
 
     protected void Shoot()
     {
-        if (!isDead && isPlayerVisible)
+        if (isActive && isPlayerVisible)
         {
             muzzleFlash.Play();
             GameObject bulletInstance = Instantiate(bullet, muzzleFlash.transform.position, Quaternion.identity);
             bulletInstance.GetComponent<Bullet>().direction = muzzleFlash.transform.forward;
+        }
+    }
+
+    public override void OnShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
+    {
+        if (!isDead)
+        {
+            AudioManager.Instance.OnKick -= Shoot;
+            base.OnShot(objectShot, hitPoint, direction);
         }
     }
 }

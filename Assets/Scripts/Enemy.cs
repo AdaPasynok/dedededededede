@@ -6,6 +6,8 @@ using UnityEngine.Animations.Rigging;
 
 public abstract class Enemy : MonoBehaviour, IShootable
 {
+    [SerializeField] protected bool isActive = true;
+    [Space]
     [SerializeField] private Transform head;
     [SerializeField] private LayerMask ignoreSelfMask;
     [Space]

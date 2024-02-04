@@ -15,12 +15,15 @@ public class EnemyChaser : Enemy
     }
     private void ChasePlayer(Vector3 playerPosition)
     {
-        NavMeshPath path = new();
-        navMeshAgent.CalculatePath(playerPosition, path);
-
-        if (path.status == NavMeshPathStatus.PathComplete)
+        if (isActive)
         {
-            navMeshAgent.path = path;
+            NavMeshPath path = new();
+            navMeshAgent.CalculatePath(playerPosition, path);
+
+            if (path.status == NavMeshPathStatus.PathComplete)
+            {
+                navMeshAgent.path = path;
+            }
         }
     }
 
