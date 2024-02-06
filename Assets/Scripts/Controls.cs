@@ -134,6 +134,98 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Intro"",
+            ""id"": ""bf687dd3-44f7-46d4-985d-bd95370d3239"",
+            ""actions"": [
+                {
+                    ""name"": ""Any Key"",
+                    ""type"": ""Value"",
+                    ""id"": ""7f463f6b-5580-4780-8a83-5dd4c8d5f847"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""type"": ""Value"",
+                    ""id"": ""6609375e-80d7-4af2-9ce1-fb1d122a83d1"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""77eeb3b4-58cc-48cb-8866-d1de3396cb6f"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Any Key"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""7c76e222-58a8-43d0-bc33-95b151435f87"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WASD"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9ca28c0e-1bd2-4c9a-815f-3edb277c6989"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WASD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b494e9d6-08d7-4a4a-a53a-988f967c9300"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WASD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""3a2ebb6c-b34b-4259-93da-76e4bf26d6be"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WASD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c930b3a8-d6ef-4b1c-87cb-0b008647772d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WASD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -143,6 +235,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        // Intro
+        m_Intro = asset.FindActionMap("Intro", throwIfNotFound: true);
+        m_Intro_AnyKey = m_Intro.FindAction("Any Key", throwIfNotFound: true);
+        m_Intro_WASD = m_Intro.FindAction("WASD", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,10 +358,69 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Intro
+    private readonly InputActionMap m_Intro;
+    private List<IIntroActions> m_IntroActionsCallbackInterfaces = new List<IIntroActions>();
+    private readonly InputAction m_Intro_AnyKey;
+    private readonly InputAction m_Intro_WASD;
+    public struct IntroActions
+    {
+        private @Controls m_Wrapper;
+        public IntroActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @AnyKey => m_Wrapper.m_Intro_AnyKey;
+        public InputAction @WASD => m_Wrapper.m_Intro_WASD;
+        public InputActionMap Get() { return m_Wrapper.m_Intro; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(IntroActions set) { return set.Get(); }
+        public void AddCallbacks(IIntroActions instance)
+        {
+            if (instance == null || m_Wrapper.m_IntroActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_IntroActionsCallbackInterfaces.Add(instance);
+            @AnyKey.started += instance.OnAnyKey;
+            @AnyKey.performed += instance.OnAnyKey;
+            @AnyKey.canceled += instance.OnAnyKey;
+            @WASD.started += instance.OnWASD;
+            @WASD.performed += instance.OnWASD;
+            @WASD.canceled += instance.OnWASD;
+        }
+
+        private void UnregisterCallbacks(IIntroActions instance)
+        {
+            @AnyKey.started -= instance.OnAnyKey;
+            @AnyKey.performed -= instance.OnAnyKey;
+            @AnyKey.canceled -= instance.OnAnyKey;
+            @WASD.started -= instance.OnWASD;
+            @WASD.performed -= instance.OnWASD;
+            @WASD.canceled -= instance.OnWASD;
+        }
+
+        public void RemoveCallbacks(IIntroActions instance)
+        {
+            if (m_Wrapper.m_IntroActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IIntroActions instance)
+        {
+            foreach (var item in m_Wrapper.m_IntroActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_IntroActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public IntroActions @Intro => new IntroActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+    }
+    public interface IIntroActions
+    {
+        void OnAnyKey(InputAction.CallbackContext context);
+        void OnWASD(InputAction.CallbackContext context);
     }
 }
