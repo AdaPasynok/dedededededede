@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private float cameraShakeForce = 1f;
+    [SerializeField] private Animator noLMBAnimator;
 
     private InputManager inputManager;
     private CinemachineImpulseSource cameraShake;
@@ -25,7 +26,7 @@ public class Gun : MonoBehaviour
     {
         if (inputManager.PlayerShot() && isGunOut)
         {
-            //Shoot();
+            noLMBAnimator.SetTrigger("LMB Pressed");
         }
     }
 
