@@ -27,8 +27,11 @@ public class PathEnemiesFollowPlayer : MonoBehaviour
     {
         isFollowing = !isFollowing;
 
-        Vector3 newEnemiesRotation = enemies.transform.eulerAngles;
-        newEnemiesRotation.y = Random.Range(0f, 360f);
-        enemies.transform.eulerAngles = newEnemiesRotation;
+        if (isFollowing)
+        {
+            Vector3 newEnemiesRotation = enemies.transform.eulerAngles;
+            newEnemiesRotation.y = Random.Range(0f, 360f);
+            enemies.transform.eulerAngles = newEnemiesRotation;
+        }
     }
 }

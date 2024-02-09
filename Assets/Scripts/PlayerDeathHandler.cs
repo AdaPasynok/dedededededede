@@ -13,7 +13,10 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Die();
+            if (other.GetComponent<Enemy>().ableToKill)
+            {
+                Die();
+            }
         }
     }
 

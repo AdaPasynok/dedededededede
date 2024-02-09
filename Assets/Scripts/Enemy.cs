@@ -6,6 +6,8 @@ using UnityEngine.Animations.Rigging;
 
 public abstract class Enemy : MonoBehaviour, IShootable
 {
+    public bool ableToKill = true;
+
     [SerializeField] protected bool isActive = true;
     [Space]
     [SerializeField] private Transform head;
