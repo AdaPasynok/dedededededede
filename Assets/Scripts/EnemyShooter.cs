@@ -42,12 +42,12 @@ public class EnemyShooter : Enemy
         }
     }
 
-    public override void OnGotShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
+    public override void Die()
     {
         if (!isDead)
         {
             AudioManager.Instance.OnKick -= Shoot;
-            base.OnGotShot(objectShot, hitPoint, direction);
+            base.Die();
         }
     }
 }

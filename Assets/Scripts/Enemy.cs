@@ -57,15 +57,20 @@ public abstract class Enemy : MonoBehaviour, IShootable
         }
     }
 
-    private void EnableRagdoll()
+    public void OnGotShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
     {
-        foreach (Rigidbody rigidbody in rigidbodies)
+        if (!isDead)
         {
-            rigidbody.isKinematic = false;
+            Die();
+            objectShot.GetComponent<Rigidbody>().AddForceAtPosition(gunShotForce * direction, hitPoint, ForceMode.Impulse);
+            bloodSplash.transform.SetParent(objectShot.transform);
+            bloodSplash.transform.position = hitPoint;
+            bloodSplash.transform.forward = -direction;
+            bloodSplash.Play();
         }
     }
 
-    public virtual void OnGotShot(GameObject objectShot, Vector3 hitPoint, Vector3 direction)
+    public virtual void Die()
     {
         if (!isDead)
         {
@@ -73,13 +78,11 @@ public abstract class Enemy : MonoBehaviour, IShootable
             enemyManager.OnEnemyKilled();
             outerTriggerColliderForPlayerCollisionDetection.enabled = false;
             rigBuilder.enabled = false;
-            EnableRagdoll();
-            objectShot.GetComponent<Rigidbody>().AddForceAtPosition(gunShotForce * direction, hitPoint, ForceMode.Impulse);
 
-            bloodSplash.transform.SetParent(objectShot.transform);
-            bloodSplash.transform.position = hitPoint;
-            bloodSplash.transform.forward = -direction;
-            bloodSplash.Play();
+            foreach (Rigidbody rigidbody in rigidbodies)
+            {
+                rigidbody.isKinematic = false;
+            }
         }
     }
 }
