@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bullseye.unity
     guid: 200aea01693bbb44b800bcf42c923b35
+  - enabled: 1
+    path: Assets/Scenes/Path.unity
+    guid: ebcbca1bf2b0c8a48a5037d9a57a83a0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f7f4129cfb83c69448ecd76d6a497e66,
       type: 2}
