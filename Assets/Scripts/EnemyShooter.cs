@@ -25,7 +25,7 @@ public class EnemyShooter : Enemy
         foreach (MultiAimConstraint constraint in aimingRig)
         {
             WeightedTransformArray sourceObjects = constraint.data.sourceObjects;
-            sourceObjects.SetTransform(0, gameManager.playerBody);
+            sourceObjects.SetTransform(0, gameManager.playerHead);
             constraint.data.sourceObjects = sourceObjects;
         }
 
