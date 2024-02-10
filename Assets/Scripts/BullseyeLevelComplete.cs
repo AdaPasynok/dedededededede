@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelCompletionBullseye : MonoBehaviour
+public class BullseyeLevelComplete : MonoBehaviour
 {
+    [SerializeField] private Animator RoomGateAnimator;
+
     private void Start()
     {
         EnemyManager.Instance.OnAllEnemiesDead += CompleteLevel;
@@ -12,6 +14,6 @@ public class LevelCompletionBullseye : MonoBehaviour
     private void CompleteLevel()
     {
         AudioManager.Instance.StopKicks();
-        GameManager.Instance.LoadNextLevel();
+        RoomGateAnimator.SetTrigger("Open Gate");
     }
 }
