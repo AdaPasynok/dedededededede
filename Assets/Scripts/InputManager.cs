@@ -32,14 +32,19 @@ public class InputManager : MonoBehaviour
         controls.Disable();
     }
 
-    public bool IntroAnyKeyPressed()
+    public bool MenuAnyKeyPressed()
     {
-        return controls.Intro.AnyKey.triggered;
+        return controls.Menu.AnyKey.triggered;
     }
 
-    public Vector2 GetIntroWASDPress()
+    public Vector2 GetMenuWASDPress()
     {
-        return controls.Intro.WASD.ReadValue<Vector2>();
+        return controls.Menu.WASD.ReadValue<Vector2>();
+    }
+
+    public Vector2 GetMenuENDPress()
+    {
+        return controls.Menu.AnyEND.ReadValue<Vector2>();
     }
 
     public Vector2 GetPlayerMovement()

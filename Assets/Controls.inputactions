@@ -114,7 +114,7 @@
             ]
         },
         {
-            "name": "Intro",
+            "name": "Menu",
             "id": "bf687dd3-44f7-46d4-985d-bd95370d3239",
             "actions": [
                 {
@@ -130,6 +130,15 @@
                     "name": "WASD",
                     "type": "Value",
                     "id": "6609375e-80d7-4af2-9ce1-fb1d122a83d1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AnyEND",
+                    "type": "Value",
+                    "id": "d7eefac1-5d72-4d72-96b0-3284288887fe",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -200,6 +209,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "7321cf08-3304-492a-b9a4-cd2e35a08564",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyEND",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "8efbfe30-38c0-43d1-81a7-9e29db888f5d",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyEND",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "00020c2b-f486-4ac9-914c-3dfc393abab6",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyEND",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "af98f932-d90e-4809-83c6-e6264563721e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyEND",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "c9f07b6d-bec2-488a-8725-ec8bbb65e3d4",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyEND",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
