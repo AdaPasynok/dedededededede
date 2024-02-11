@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public event Action OnKick;
 
     [SerializeField] private AudioClip kick;
-    [SerializeField, Range(1, 1000)] private int BPM = 120;
+    [Range(1, 1000)] public int BPM = 120;
 
     private AudioSource audioSource;
     private Coroutine kickCoroutine;
