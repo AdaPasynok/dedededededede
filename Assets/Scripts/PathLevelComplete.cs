@@ -16,22 +16,15 @@ public class PathLevelComplete : MonoBehaviour
         audioManager = AudioManager.Instance;
     }
 
-    private void LevelComplete()
+    private void CompleteLevel()
     {
         audioManager.StopKicks();
         enemiesFollowing.SetActive(false);
         enemiesAtExit.SetActive(true);
     }
 
-    public void LevelCompleteAfterNextLightOn()
+    public void CompleteLevelAfterNextLightOn()
     {
-        if (blackImage.enabled)
-        {
-            audioManager.OnKick += LevelComplete;
-        }
-        else
-        {
-            audioManager.OnKick += LevelCompleteAfterNextLightOn;
-        }
+        audioManager.OnKick += CompleteLevel;
     }
 }

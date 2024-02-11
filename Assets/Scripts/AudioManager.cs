@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource audioSource;
     private Coroutine kickCoroutine;
+    private bool kicksOnTwo = true;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class AudioManager : MonoBehaviour
         while (true)
         {
             audioSource.PlayOneShot(kick);
+            kicksOnTwo = !kicksOnTwo;
             OnKick?.Invoke();
 
             yield return new WaitForSeconds(60f / BPM);
@@ -53,6 +55,19 @@ public class AudioManager : MonoBehaviour
 
     public void StopKicks()
     {
-        StopCoroutine(kickCoroutine);
+        if (kicksOnTwo)
+        {
+            StopCoroutine(kickCoroutine);
+        }
+        else
+        {
+            OnKick += StopKicksOnTwo;
+        }
+    }
+
+    private void StopKicksOnTwo()
+    {
+        StopKicks();
+        OnKick -= StopKicksOnTwo;
     }
 }

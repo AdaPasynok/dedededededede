@@ -14713,7 +14713,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 590605657}
         m_TargetAssemblyTypeName: PathLevelComplete, Assembly-CSharp
-        m_MethodName: LevelCompleteAfterNextLightOn
+        m_MethodName: CompleteLevelAfterNextLightOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17006,6 +17006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fca2841ef0d1b149bdeabacba2dc52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invertOnStart: 1
 --- !u!1 &704303524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8002780899838126975, guid: cecf6613d79372f489ba680cddff26d2,
@@ -39090,6 +39091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9285790d1fc4b8d40993f9924f930492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoomGateAnimator: {fileID: 0}
 --- !u!4 &1429949645
 Transform:
   m_ObjectHideFlags: 0
