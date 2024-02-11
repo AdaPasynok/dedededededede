@@ -2226,8 +2226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf59d376dfd18a48a762e0aa740be22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedModifier: 30
-  shotsRequired: 5
+  speedModifier: 45
+  shotsRequired: 4
   fallThroughFloorDelay: 1
   stairsCeiling: {fileID: 1289834289}
   fadingWallRenderer: {fileID: 479109370}
