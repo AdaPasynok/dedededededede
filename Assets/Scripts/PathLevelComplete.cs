@@ -18,6 +18,7 @@ public class PathLevelComplete : MonoBehaviour
 
     private void CompleteLevel()
     {
+        GameManager.Instance.FadeInExitNoise();
         audioManager.StopKicks();
         enemiesFollowing.SetActive(false);
         enemiesAtExit.SetActive(true);

@@ -64,6 +64,7 @@ public class NoRotator : MonoBehaviour
 
             if (shotsMade == shotsRequired)
             {
+                GameManager.Instance.FadeInExitNoise();
                 audioManager.StopKicks();
                 isRotating = false;
 

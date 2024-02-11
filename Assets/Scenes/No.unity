@@ -2227,7 +2227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedModifier: 30
-  shotsRequired: 1
+  shotsRequired: 5
   fallThroughFloorDelay: 1
   stairsCeiling: {fileID: 1289834289}
   fadingWallRenderer: {fileID: 479109370}
@@ -2516,6 +2516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1164544112}
   playerHead: {fileID: 1582528273}
+  noise: {fileID: 666846051}
 --- !u!4 &568619970
 Transform:
   m_ObjectHideFlags: 0
@@ -3025,6 +3026,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 666846049}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &666846051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5109185034631939253, guid: 48c1c2321b0674e4681d0bb14e2f1dcb,
+    type: 3}
+  m_PrefabInstance: {fileID: 666846049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a507596bfe6f4a48b24bac39f9b3043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &693764942
 GameObject:
   m_ObjectHideFlags: 0

@@ -2804,7 +2804,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.5, z: 33.7}
-  m_LocalScale: {x: 1, y: 1, z: 21.090004}
+  m_LocalScale: {x: 1, y: 1, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2849,6 +2849,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: StartKicks
         m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 608288970}
+        m_TargetAssemblyTypeName: Noise, Assembly-CSharp
+        m_MethodName: FadeOutAudio
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3074,6 +3086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1164544112}
   playerHead: {fileID: 1286376288}
+  noise: {fileID: 2138971366}
 --- !u!4 &568619970
 Transform:
   m_ObjectHideFlags: 0
@@ -3201,6 +3214,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2577238638478241480}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &608288970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7153522876455048605, guid: 0759f55ef8b347c438ffa065ea27c786,
+    type: 3}
+  m_PrefabInstance: {fileID: 2577238638478241480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a507596bfe6f4a48b24bac39f9b3043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &652081311
 GameObject:
   m_ObjectHideFlags: 0
@@ -5967,7 +5992,7 @@ Transform:
   m_GameObject: {fileID: 1164544108}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.88, z: -2.7}
+  m_LocalPosition: {x: -0.4, y: 0.88, z: -8.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6464,7 +6489,7 @@ Transform:
   m_GameObject: {fileID: 1305420466}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 1.3299999, z: -2.55}
+  m_LocalPosition: {x: -0.4, y: 1.3299999, z: -8.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11956,7 +11981,7 @@ Transform:
   m_GameObject: {fileID: 1468873160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 1.3299999, z: -2.55}
+  m_LocalPosition: {x: -0.4, y: 1.3299999, z: -8.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13882,6 +13907,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8457399030952129589, guid: 48c1c2321b0674e4681d0bb14e2f1dcb,
+        type: 3}
+      propertyPath: rolloffMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457399030952129589, guid: 48c1c2321b0674e4681d0bb14e2f1dcb,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].value
+      value: 0.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457399030952129589, guid: 48c1c2321b0674e4681d0bb14e2f1dcb,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[5].value
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15145,6 +15185,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 5ab9c38895ee4724b8dbd8586c92a328, type: 3}
+--- !u!114 &2138971366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5109185034631939253, guid: 48c1c2321b0674e4681d0bb14e2f1dcb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1932334497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a507596bfe6f4a48b24bac39f9b3043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &281855665135645761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 281855664364225751, guid: 5ab9c38895ee4724b8dbd8586c92a328,
@@ -15357,6 +15409,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Noise
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836563977519441181, guid: 0759f55ef8b347c438ffa065ea27c786,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

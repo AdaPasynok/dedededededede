@@ -45,6 +45,7 @@ public class SearchStatue : MonoBehaviour, IShootable
                         {
                             roomGateAnimator.SetTrigger("Open Gate");
                             AudioManager.Instance.StopKicks();
+                            GameManager.Instance.FadeInExitNoise();
                             isActive = false;
                         }
                     }

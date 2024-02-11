@@ -15,5 +15,6 @@ public class BullseyeLevelComplete : MonoBehaviour
     {
         AudioManager.Instance.StopKicks();
         RoomGateAnimator.SetTrigger("Open Gate");
+        GameManager.Instance.FadeInExitNoise();
     }
 }

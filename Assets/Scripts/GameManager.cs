@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Transform playerBody;
     public Transform playerHead;
 
+    [SerializeField] private Noise noise;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,5 +41,10 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void FadeInExitNoise()
+    {
+        noise.FadeInAudio();
     }
 }
