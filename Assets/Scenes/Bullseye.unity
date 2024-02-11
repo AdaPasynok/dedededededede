@@ -1431,6 +1431,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Chaser (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
       propertyPath: m_Speed
@@ -2064,6 +2069,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Chaser (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
       propertyPath: m_Speed
@@ -2142,6 +2152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -3074,6 +3089,8 @@ MonoBehaviour:
   playerBody: {fileID: 1164544112}
   playerHead: {fileID: 1286376288}
   noise: {fileID: 2138971366}
+  playerPistol: {fileID: 1451455620}
+  crosshairAnimator: {fileID: 52075439}
 --- !u!4 &568619970
 Transform:
   m_ObjectHideFlags: 0
@@ -3381,6 +3398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -4264,6 +4286,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Chaser (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
       propertyPath: m_Speed
@@ -4364,6 +4391,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -4546,6 +4578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -4743,6 +4780,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -4950,6 +4992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -5326,6 +5373,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Chaser (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
       propertyPath: m_Speed
@@ -5522,6 +5574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -5838,6 +5895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -12209,6 +12271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Chaser (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
       propertyPath: m_Speed
@@ -13798,6 +13865,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Chaser (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
       propertyPath: m_Speed
@@ -14357,6 +14429,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}
@@ -15121,6 +15198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Chaser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517483871540646267, guid: b012134c6fa55644a8fc5c226f9077a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435258845551715887, guid: b012134c6fa55644a8fc5c226f9077a4,
         type: 3}

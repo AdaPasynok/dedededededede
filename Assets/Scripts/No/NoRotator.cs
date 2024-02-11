@@ -10,6 +10,7 @@ public class NoRotator : MonoBehaviour
     [SerializeField] private MeshRenderer fadingWallRenderer;
     [SerializeField] private float fadeTime = 1f;
 
+    private GameManager gameManager;
     private AudioManager audioManager;
     private ShaderInverter[] childEnemiesShaderInverters;
     private bool isRotating = false;
@@ -20,6 +21,7 @@ public class NoRotator : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         audioManager = AudioManager.Instance;
         childEnemiesShaderInverters = GetComponentsInChildren<ShaderInverter>();
         initialBPM = audioManager.BPM;
@@ -63,7 +65,8 @@ public class NoRotator : MonoBehaviour
 
             if (shotsMade == shotsRequired)
             {
-                GameManager.Instance.FadeInExitNoise();
+                gameManager.FadeInExitNoise();
+                gameManager.PutPlayerGunAway();
                 audioManager.StopKicks();
                 isRotating = false;
 

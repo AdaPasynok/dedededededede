@@ -48,4 +48,10 @@ public class Gun : MonoBehaviour
     {
         isGunOut = true;
     }
+
+    public void PutGunAway()
+    {
+        isGunOut = false;
+        GetComponent<Animator>().SetTrigger("Put Away");
+    }
 }

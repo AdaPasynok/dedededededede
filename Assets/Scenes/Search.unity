@@ -1569,6 +1569,8 @@ MonoBehaviour:
   playerBody: {fileID: 1164544112}
   playerHead: {fileID: 1582528273}
   noise: {fileID: 1539531595}
+  playerPistol: {fileID: 1451455620}
+  crosshairAnimator: {fileID: 52075439}
 --- !u!4 &568619970
 Transform:
   m_ObjectHideFlags: 0

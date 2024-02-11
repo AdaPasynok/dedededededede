@@ -10,6 +10,7 @@ public class SearchStatue : MonoBehaviour, IShootable
     [SerializeField] private MultiAimConstraint statuePointAim;
     [SerializeField] private Animator roomGateAnimator;
 
+    private GameManager gameManager;
     private WeightedTransformArray aimTargets;
     private GameObject watchedObject = null, lastWatchedObject = null;
     private bool isActive = true;
@@ -18,6 +19,7 @@ public class SearchStatue : MonoBehaviour, IShootable
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         aimTargets = statuePointAim.data.sourceObjects;
     }
 
@@ -44,7 +46,8 @@ public class SearchStatue : MonoBehaviour, IShootable
                         {
                             roomGateAnimator.SetTrigger("Open Gate");
                             AudioManager.Instance.StopKicks();
-                            GameManager.Instance.FadeInExitNoise();
+                            gameManager.FadeInExitNoise();
+                            gameManager.PutPlayerGunAway();
                             isActive = false;
                         }
                     }

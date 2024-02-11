@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Transform playerHead;
 
     [SerializeField] private Noise noise;
+    [SerializeField] private Gun playerPistol;
+    [SerializeField] private Animator crosshairAnimator;
 
     private void Awake()
     {
@@ -44,5 +46,11 @@ public class GameManager : MonoBehaviour
     public void FadeInExitNoise()
     {
         noise.FadeInAudio();
+    }
+
+    public void PutPlayerGunAway()
+    {
+        playerPistol.PutGunAway();
+        crosshairAnimator.SetTrigger("Fade Out");
     }
 }
