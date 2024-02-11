@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: 000a56b902cf31944a41f73e2e623f36
   - enabled: 1
+    path: Assets/Scenes/Corridor.unity
+    guid: aaa63b5595fe1be4590e5daa838200c9
+  - enabled: 1
     path: Assets/Scenes/Bullseye.unity
     guid: 200aea01693bbb44b800bcf42c923b35
   - enabled: 1
